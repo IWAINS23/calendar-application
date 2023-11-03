@@ -22,21 +22,21 @@ localStorage.setItem(timeId, value);
 })
 
 function hourUpdate (){
-    let currentHour = moment().hour();
+    let currentHour = moment().hours();
 
 for (let i = 0; i < $(".time-block").length; i++){
     let hour = parseInt($(".time-block")[i].getAttribute("id").split("-")[1])
     console.log(hour)
     console.log(currentHour)
     if (hour < currentHour) {
-        $(".time-block")[i].classlist.add("past")
+        $(".time-block")[i].classList.add("past")
     } else if (hour === currentHour) {
-        $(".time-block")[i].classlist.remove("past")
-        $(".time-block")[i].classlist.add("present")
+        $(".time-block")[i].classList.add("past")
+        $(".time-block")[i].classList.remove("present")
     } else {
-        $(".time-block")[i].classlist.remove("past")
-        $(".time-block")[i].classlist.remove("present")
-        $(".time-block")[i].classlist.remove("future")
+        $(".time-block")[i].classList.remove("past")
+        $(".time-block")[i].classList.remove("present")
+        $(".time-block")[i].classList.add("future")
     }
 } 
 
@@ -44,6 +44,21 @@ for (let i = 0; i < $(".time-block").length; i++){
 
 
 
-hour.update();
+hourUpdate();
+
+let interval = setInterval(hourUpdate, 15000);
+
+$("#hour-9 .description").val(localStorage.getItem("hour-9"))
+$("#hour-10 .description").val(localStorage.getItem("hour-10"))
+$("#hour-11 .description").val(localStorage.getItem("hour-11"))
+$("#hour-12 .description").val(localStorage.getItem("hour-12"))
+$("#hour-13 .description").val(localStorage.getItem("hour-13"))
+$("#hour-14 .description").val(localStorage.getItem("hour-14"))
+$("#hour-15 .description").val(localStorage.getItem("hour-15"))
+$("#hour-16 .description").val(localStorage.getItem("hour-16"))
+$("#hour-17 .description").val(localStorage.getItem("hour-17"))
+
+
+$("#currentDay").text(moment().format("dddd, MMMM, Do"))
 
 })
