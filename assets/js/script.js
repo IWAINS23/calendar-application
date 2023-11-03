@@ -12,7 +12,38 @@ $(".saveButton").on("click", function() {
 localStorage.setItem(timeId, value);
 
     $(".notification").addClass('show');
+
+    setTimeout(function() {
+        $(".notification").removeClass('show');
+    }, 5000)
+
+
+
 })
 
+function hourUpdate (){
+    let currentHour = moment().hour();
+
+for (let i = 0; i < $(".time-block").length; i++){
+    let hour = parseInt($(".time-block")[i].getAttribute("id").split("-")[1])
+    console.log(hour)
+    console.log(currentHour)
+    if (hour < currentHour) {
+        $(".time-block")[i].classlist.add("past")
+    } else if (hour === currentHour) {
+        $(".time-block")[i].classlist.remove("past")
+        $(".time-block")[i].classlist.add("present")
+    } else {
+        $(".time-block")[i].classlist.remove("past")
+        $(".time-block")[i].classlist.remove("present")
+        $(".time-block")[i].classlist.remove("future")
+    }
+} 
+
+}
+
+
+
+hour.update();
 
 })
