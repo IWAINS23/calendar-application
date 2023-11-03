@@ -1,6 +1,6 @@
 # calendar-application
 
-I have build a work day calender application using Js and HTML
+I have built a work day calender application using Js and HTML
 
 https://iwains23.github.io/calendar-application/
 
